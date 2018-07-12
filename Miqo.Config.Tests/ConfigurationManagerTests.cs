@@ -1,6 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-using Xunit;
+﻿using Xunit;
 
 namespace Miqo.Config.Tests {
 	public class ConfigurationManagerTests {
@@ -136,9 +134,5 @@ namespace Miqo.Config.Tests {
 
 			Assert.Null(deserializedConfig.IgnoredVariable);
 		}
-
-		// TODO: Incorrect key
-		// TODO: Unreadable encrypted text
-		// TODO: Incorrect data
 	}
 }
