@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miqo.Config", "Miqo.Config\Miqo.Config.csproj", "{F4A029ED-035B-4327-A042-5086F0AD7D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miqo.Config.Tests", "Miqo.Config.Tests\Miqo.Config.Tests.csproj", "{8782480B-E658-4957-8284-67FCA2B23D28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4A029ED-035B-4327-A042-5086F0AD7D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A029ED-035B-4327-A042-5086F0AD7D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A029ED-035B-4327-A042-5086F0AD7D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A029ED-035B-4327-A042-5086F0AD7D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8782480B-E658-4957-8284-67FCA2B23D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8782480B-E658-4957-8284-67FCA2B23D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8782480B-E658-4957-8284-67FCA2B23D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8782480B-E658-4957-8284-67FCA2B23D28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AC766CF-237F-4DEE-AC45-AAC05F2560DE}
+	EndGlobalSection
+EndGlobal
