@@ -14,5 +14,8 @@
 
 Miqo.Config helps translate your strongly typed object to a JSON configuration file.</description>
 		<copyright>Copyright © Miqo DA 2018</copyright>
+		<dependencies>
+        	<dependency id="Newtonsoft.Json" version="9.0.1" />
+		</dependencies>		
 	</metadata>
 </package>
