@@ -7,10 +7,10 @@ Miqo.Config helps translate your strongly typed object to a JSON configuration f
 
 ## Adding Miqo.Config to your project
 
-Currently the library is not available as a NuGet package. The package should be available in a day or two.
+The library is available as a NuGet package.
 
 ```
-TODO: Create NuGet package
+PM> Install-Package Miqo.Config
 ```
 
 ## Creating the configuration class
