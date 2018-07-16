@@ -1,6 +1,5 @@
 # Miqo.Config, the easy to use configuration file manager
 
-
 Writing repetitive code to manage, read and write configuration files for every project is tedious. Let Miqo.Config take care of the heavy lifting of managing configuration files for you, so you can focus on your project.
 
 Miqo.Config helps translate your strongly typed object to a JSON configuration file.
@@ -49,6 +48,8 @@ var config = new Miqo.Config.ConfigurationManager()
 Console.Writeline(config.ConnectionString);
 ```
 
+Application wide configurations are stored in the same directory as the application. A custom location can be specified using ```ApplicationSettings(string directory)```.
+
 ## Writing settings to a configuration file
 
 ```csharp
@@ -88,7 +89,7 @@ new Miqo.Config.ConfigurationManager()
 	.ToFile("Spiffy.json");
 ```
 
-Use ```UserSettings(string appName)``` instead of ```ApplicationSettings()``` to save the configuration to the currently logged in user's ApplicationData folder instead. You can specify a subfolder for your particular application's data.
+Use ```UserSettings(string appName)``` instead of ```ApplicationSettings()``` to save the configuration to the currently logged in user's ApplicationData folder. You can specify a subfolder for your particular application's data.
 
 ## Additional features
 
@@ -99,6 +100,7 @@ Miqo.Config has some other nifty features that may be useful to you as a develop
 If you are storing usernames, password, connection strings, API keys or any other such sensitive data, you should consider encrypting the property. Add the ```[JsonConverter(typeof(EncryptedPropertyConverter), key)]``` attribute to the property.
 
 Example:
+
 ```csharp
 [JsonConverter(typeof(EncryptedPropertyConverter), "8ef51d43-03b9-4831-b415-5c73d472340d")]
 public string ConnectionString { get; set; }
