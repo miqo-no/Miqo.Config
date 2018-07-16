@@ -2,22 +2,42 @@
 using System.IO;
 
 namespace Miqo.Config {
+	/// <summary>
+	/// The Configuration Manager manages either application wide or user specific settings
+	/// </summary>
 	public class ConfigurationManager {
 		public string ConfigurationFileLocation { get; private set; }
 		private Configuration _config = new Configuration();
 		public Action<string> Log { get; set; }
 		public Action<string, Exception> LogException { get; set; }
 
+		/// <summary>
+		/// Manage application wide settings, storing the configuration file in the same location as the application
+		/// </summary>
+		/// <returns></returns>
 		public ConfigurationManager ApplicationSettings() {
 			ConfigurationFileLocation = AppDomain.CurrentDomain.BaseDirectory;
 			return this;
 		}
 
+		/// <summary>
+		/// Manage application wide settings, storing the configuration file in a custom directory
+		/// </summary>
+		/// <param name="directory">Location of configuration file</param>
+		/// <returns></returns>
 		public ConfigurationManager ApplicationSettings(string directory) {
 			ConfigurationFileLocation = Directory.Exists(directory) ? directory : AppDomain.CurrentDomain.BaseDirectory;
 			return this;
 		}
 
+		/// <summary>
+		/// Manage user specific settings, storing the configuration file in the user'json Application Data system directory.
+		/// </summary>
+		/// <remarks>
+		/// The configuration file should be placed in a subfolder specific to your application.
+		/// </remarks>
+		/// <param name="applicationName">Name of the application</param>
+		/// <returns></returns>
 		public ConfigurationManager UserSettings(string applicationName) {
 			if (string.IsNullOrWhiteSpace(applicationName)) throw new ArgumentNullException();
 
@@ -25,9 +45,16 @@ namespace Miqo.Config {
 			return this;
 		}
 
-		public T LoadConfigurationFromFile<T>(string fileName, bool useAbsolutePath = false) where T : new() {
-			if (fileName == null) throw new ArgumentNullException();
-			var file = useAbsolutePath ? fileName : Path.Combine(ConfigurationFileLocation, fileName);
+		/// <summary>
+		/// Load a configuration file, parses the JSON contents of the file, and returns a strongly typed object 
+		/// </summary>
+		/// <typeparam name="T">Strongly typed object with your application'json configuration properties</typeparam>
+		/// <param name="file">Name of the configuration file</param>
+		/// <param name="useAbsolutePath">Set to true if <paramref name="file"/> is an absolute path</param>
+		/// <returns></returns>
+		public T LoadConfigurationFromFile<T>(string file, bool useAbsolutePath = false) where T : new() {
+			if (file == null) throw new ArgumentNullException();
+			file = useAbsolutePath ? file : Path.Combine(ConfigurationFileLocation, file);
 
 			var fromFile = ReadConfigurationFromFile(file);
 			_config.LastUpdated = fromFile.LastUpdated;
@@ -47,9 +74,15 @@ namespace Miqo.Config {
 			}
 		}
 
-		public T LoadConfigurationFromString<T>(string s) where T : new() {
+		/// <summary>
+		/// Load a configuration from a JSON string, parses the JSON, and returns a strongly typed object 
+		/// </summary>
+		/// <typeparam name="T">Strongly typed object with your application'json configuration properties</typeparam>
+		/// <param name="json">String containing the configuration formatted as JSON</param>
+		/// <returns></returns>
+		public T LoadConfigurationFromString<T>(string json) where T : new() {
 			_config.LastUpdated = DateTime.UtcNow;
-			_config.Raw = s;
+			_config.Raw = json;
 			_config.FromFile = false;
 
 			_config.Parsed = ParseConfiguration<T>(_config.Raw);
@@ -65,6 +98,15 @@ namespace Miqo.Config {
 			}
 		}
 
+		/// <summary>
+		/// Prepares the configuration for being saved to a file or a string
+		/// </summary>
+		/// <remarks>
+		/// Use <see cref="ToFile(string, bool)"/> to save the configuration as a file,
+		/// or <see cref="ToString"/> to save the configuration as a string
+		/// </remarks>
+		/// <param name="config">Your strongly typed configuration class</param>
+		/// <returns></returns>
 		public ConfigurationManager SaveConfiguration(object config) {
 			if (config == null) throw new ArgumentNullException();
 
@@ -81,6 +123,11 @@ namespace Miqo.Config {
 			return this;
 		}
 
+		/// <summary>
+		/// Saves the configuration as a JSON file
+		/// </summary>
+		/// <param name="file">Name of the configuration file</param>
+		/// <param name="useAbsolutePath">Set to true if <paramref name="file"/> is an absolute path</param>
 		public void ToFile(string file, bool useAbsolutePath = false) {
 			file = useAbsolutePath ? file : Path.Combine(ConfigurationFileLocation, file);
 
@@ -95,11 +142,20 @@ namespace Miqo.Config {
 			Log?.Invoke($"Miqo.Config: Configuration saved to file");
 		}
 
+		/// <summary>
+		/// Returns the configuration as a JSON formatted string
+		/// </summary>
+		/// <returns>JSON formatted string</returns>
 		public override string ToString() {
 			return _config.Raw;
 		}
 
-
+		/// <summary>
+		/// Parses a JSON formatted string and returns a strongly typed configuration class
+		/// </summary>
+		/// <typeparam name="T">Strongly typed configuration class</typeparam>
+		/// <param name="configRaw">JSON formatted string</param>
+		/// <returns></returns>
 		private T ParseConfiguration<T>(string configRaw) where T : new() {
 			var config = default(T);
 
@@ -121,6 +177,11 @@ namespace Miqo.Config {
 			return new T();
 		}
 
+		/// <summary>
+		/// Reads a configuration file, and returns the contents as a string
+		/// </summary>
+		/// <param name="file">Location of JSON configuration file</param>
+		/// <returns></returns>
 		private ConfigurationItem ReadConfigurationFromFile(string file) {
 			var item = new ConfigurationItem();
 			var data = "";
