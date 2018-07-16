@@ -3,26 +3,31 @@ using System.IO;
 
 namespace Miqo.Config {
 	public class ConfigurationManager {
-		private string _configurationFileLocation;
+		public string ConfigurationFileLocation { get; private set; }
 		private Configuration _config = new Configuration();
 		public Action<string> Log { get; set; }
 		public Action<string, Exception> LogException { get; set; }
 
 		public ConfigurationManager ApplicationSettings() {
-			_configurationFileLocation = AppDomain.CurrentDomain.BaseDirectory;
+			ConfigurationFileLocation = AppDomain.CurrentDomain.BaseDirectory;
+			return this;
+		}
+
+		public ConfigurationManager ApplicationSettings(string directory) {
+			ConfigurationFileLocation = Directory.Exists(directory) ? directory : AppDomain.CurrentDomain.BaseDirectory;
 			return this;
 		}
 
 		public ConfigurationManager UserSettings(string applicationName) {
 			if (string.IsNullOrWhiteSpace(applicationName)) throw new ArgumentNullException();
 
-			_configurationFileLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationName);
+			ConfigurationFileLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationName);
 			return this;
 		}
 
 		public T LoadConfigurationFromFile<T>(string fileName, bool useAbsolutePath = false) where T : new() {
 			if (fileName == null) throw new ArgumentNullException();
-			var file = useAbsolutePath ? fileName : Path.Combine(_configurationFileLocation, fileName);
+			var file = useAbsolutePath ? fileName : Path.Combine(ConfigurationFileLocation, fileName);
 
 			var fromFile = ReadConfigurationFromFile(file);
 			_config.LastUpdated = fromFile.LastUpdated;
@@ -77,7 +82,7 @@ namespace Miqo.Config {
 		}
 
 		public void ToFile(string file, bool useAbsolutePath = false) {
-			file = useAbsolutePath ? file : Path.Combine(_configurationFileLocation, file);
+			file = useAbsolutePath ? file : Path.Combine(ConfigurationFileLocation, file);
 
 			try {
 				File.WriteAllText(file, _config.Raw, System.Text.Encoding.UTF8);

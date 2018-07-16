@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.IO;
+using Xunit;
 
 namespace Miqo.Config.Tests {
 	public class ConfigurationManagerTests {
@@ -133,6 +134,20 @@ namespace Miqo.Config.Tests {
 				.LoadConfigurationFromString<ConfigClasses.ConfigurationWithEncryption>(s);
 
 			Assert.Null(deserializedConfig.IgnoredVariable);
+		}
+
+		[Fact]
+		public void CanUseCustomApplicationFileLocation() {
+			var cm = new ConfigurationManager()
+				.ApplicationSettings(Path.GetTempPath());
+
+			Assert.Equal(Path.GetTempPath(), cm.ConfigurationFileLocation);
+
+			var cm2 = new ConfigurationManager()
+				.ApplicationSettings(@"C:\");
+
+			Assert.Equal(@"C:\", cm2.ConfigurationFileLocation);
+			Assert.NotEqual(cm.ConfigurationFileLocation, cm2.ConfigurationFileLocation);
 		}
 	}
 }
