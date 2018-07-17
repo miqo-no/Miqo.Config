@@ -4,7 +4,7 @@ Writing repetitive code to manage, read and write configuration files for every 
 
 Miqo.Config helps translate your strongly typed object to a JSON configuration file.
 
-## Adding Miqo.Config to your project
+## Adding Miqo.Config to Your Project
 
 The library is available as a NuGet package.
 
@@ -12,7 +12,7 @@ The library is available as a NuGet package.
 PM> Install-Package Miqo.Config
 ```
 
-## Creating the configuration class
+## Creating the Configuration Class
 
 Start by creating a class to hold your configurations.
 
@@ -24,7 +24,7 @@ public class Configuration {
 }
 ```
 
-## Reading a configuration file
+## Reading a Configuration File
 
 Reading the application settings from a JSON file is done in the following way:
 
@@ -50,7 +50,7 @@ Console.Writeline(config.ConnectionString);
 
 Application wide configurations are stored in the same directory as the application. A custom location can be specified using ```ApplicationSettings(string directory)```.
 
-## Writing settings to a configuration file
+## Writing Settings to a Configuration File
 
 ```csharp
 var config = new Configuration {
@@ -78,7 +78,7 @@ The following file will be created in the application's folder:
 }
 ```
 
-## User specific settings
+## User Specific Settings
 
 You can have application and user specific settings that are unrelated to each other. For instance, you can save the main window's position and size in it's own configuration file.
 
@@ -95,7 +95,26 @@ Use ```UserSettings(string appName)``` instead of ```ApplicationSettings()``` to
 
 Miqo.Config has some other nifty features that may be useful to you as a developer.
 
-### Protecting sensitive information
+### Logging
+
+You can add logging capabilities to Miqo.Config by using the Log delegate. You add Serilog logging in the following way:
+
+```csharp
+var l = Log.Logger = new LoggerConfiguration()
+	.WriteTo.Console()
+	.CreateLogger();
+
+var cm = new Miqo.Config.ConfigurationManager {
+	Log = l.Information,
+	LogException = l.Error
+};
+
+cm.ApplicationSettings()
+	.SaveConfiguration(config)
+	.ToFile("config.json");
+```
+
+### Protecting Sensitive Information
 
 If you are storing usernames, password, connection strings, API keys or any other such sensitive data, you should consider encrypting the property. Add the ```[JsonConverter(typeof(EncryptedPropertyConverter), key)]``` attribute to the property.
 
@@ -109,7 +128,7 @@ public string ConnectionString { get; set; }
 Miqo.Config will encrypt the information before writing the property to the configuration file, and decrypt the information back into the property upon reading the configuration file. You can set your own key on a project to project basis. In the example above, a random GUID has been used as a pass phrase. Miqo.Config uses AES Rijndael encryption.
 
 
-### Ignoring properties
+### Ignoring Properties
 
 If you would like to prevent properties from being serialized to the configuration file, use the ```[JsonIgnore]``` attribute.
 
