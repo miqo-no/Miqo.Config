@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace Miqo.Config {
@@ -6,10 +7,9 @@ namespace Miqo.Config {
 		private readonly string _key;
 
 		public EncryptedPropertyConverter(string encryptionKey) {
-			if (encryptionKey != null)
-				_key = encryptionKey;
-			else
-				throw new ArgumentNullException(nameof(encryptionKey));
+			if (string.IsNullOrWhiteSpace(encryptionKey)) throw new ArgumentNullException(nameof(encryptionKey));
+
+			_key = encryptionKey;
 		}
 
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
@@ -19,7 +19,7 @@ namespace Miqo.Config {
 				return;
 			}
 
-			writer.WriteValue(StringCipher.Encrypt(stringValue, _key));
+			writer.WriteValue(StringCipher.EncryptString(stringValue, _key));
 		}
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
@@ -29,7 +29,7 @@ namespace Miqo.Config {
 			}
 
 			try {
-				return StringCipher.Decrypt(value, _key);
+				return StringCipher.DecryptString(value, _key);
 			}
 			catch {
 				return string.Empty;

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Xunit;
 
 namespace Miqo.Config.Tests {
@@ -106,8 +106,7 @@ namespace Miqo.Config.Tests {
 		}
 
 		[Fact]
-		public void DeserializePropertiesWithIncorrectTypeUsingDefaultValue()
-		{
+		public void DeserializePropertiesWithIncorrectTypeUsingDefaultValue() {
 			const string json = "{ \"PortNumber\": \"funky-value\" }";
 
 			var config = new ConfigurationManager()
