@@ -18,7 +18,7 @@ Writing repetitive code to manage, read and write configuration files for every 
 
 Miqo.Config helps translate your strongly typed object to a JSON configuration file.
 
-The library is available for .NET Standard 2.0 and .NET Framework 4.0 and higher. The tests project uses .NET Core 2.0.
+The library is available for .NET Standard 2.0, .NET Core 2.0 and .NET Framework 4.6.1.
 
 ## Adding Miqo.Config to Your Project
 
