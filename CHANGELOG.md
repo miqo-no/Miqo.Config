@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 Note that AppVeyor build number and the Miqo.Config release version numbers may not be in sync.
 
-## Unreleased
+## [v1.1.1](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.1) (2017-07-27)
 
 ### New features
 

@@ -10,9 +10,9 @@
 		<PackageIconUrl>https://github.com/miqo-no/Miqo.Config/raw/master/.github/logo.png</PackageIconUrl>
 		<NeutralLanguage>en</NeutralLanguage>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<AssemblyVersion>1.1.0.1</AssemblyVersion>
-		<FileVersion>1.1.0.1</FileVersion>
-		<Version>1.1.0.1</Version>
+		<AssemblyVersion>1.1.1.0</AssemblyVersion>
+		<FileVersion>1.1.1.0</FileVersion>
+		<Version>1.1.1.0</Version>
 		<Description>📄🌟 The easy to use configuration file manager for .NET
 
 Writing repetitive code to manage, read and write configuration files for every project is tedious. Let Miqo.Config take care of the heavy lifting of managing configuration files for you, so you can focus on your project.
