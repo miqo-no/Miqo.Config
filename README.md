@@ -6,10 +6,13 @@
   <br>
 </h1>
 <h3 align="center">
-	:page_facing_up::star2: The easy to use configuration file manager for .NET
+	:page_facing_up::star2: Managing application and user settings for your .NET application has never been so easy
 </h3>
 <p align="center">
-<a href="https://ci.appveyor.com/project/natsuo/miqo-config"><img src="https://ci.appveyor.com/api/projects/status/github/miqo-no/Miqo.Config?branch=master&svg=true"/></a>
+<a href="https://ci.appveyor.com/project/natsuo/miqo-config"><img src="https://img.shields.io/appveyor/ci/natsuo/miqo-config.svg?style=for-the-badge&logo=appveyor"/></a>
+<a href="https://travis-ci.org/miqo-no/Miqo.Config"><img src="https://img.shields.io/travis/miqo-no/Miqo.Config.svg?style=for-the-badge&logo=travis"></a>
+<a href="./LICENSE.md"><img src=".github/mit.svg"/></a>
+<a href="https://semver.org/"><img src=".github/semver.svg"/></a>
 </p>
 
 ## Overview
