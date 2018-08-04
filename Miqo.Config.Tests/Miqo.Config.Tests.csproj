@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp2.0</TargetFramework>
 		<IsPackable>false</IsPackable>
+		<AssemblyName>Miqo.Config.Tests</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,9 +15,5 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Miqo.Config\Miqo.Config.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Properties\" />
 	</ItemGroup>
 </Project>

@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
+	<PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+		<TargetFrameworks>netstandard2.0;netcoreapp2.0</TargetFrameworks>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
 		<TargetFrameworks>netstandard2.0;netcoreapp2.0;net461</TargetFrameworks>
+	</PropertyGroup>
+	<PropertyGroup>
 		<Authors>Miqo DA</Authors>
 		<Copyright>Copyright 2018 Miqo DA</Copyright>
 		<PackageId>Miqo.Config</PackageId>
@@ -25,9 +30,5 @@ The library is available for .NET Standard 2.0, .NET Core 2.0 and .NET Framework
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
 		<PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Properties\" />
 	</ItemGroup>
 </Project>

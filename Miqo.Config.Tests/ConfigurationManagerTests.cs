@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Xunit;
 
@@ -137,16 +138,16 @@ namespace Miqo.Config.Tests {
 
 		[Fact]
 		public void CanUseCustomApplicationFileLocation() {
-			var cm = new ConfigurationManager()
+			var standardLocation = new ConfigurationManager()
+				.ApplicationSettings();
+
+			Assert.Equal(AppDomain.CurrentDomain.BaseDirectory, standardLocation.ConfigurationFileLocation);
+
+			var customLocation = new ConfigurationManager()
 				.ApplicationSettings(Path.GetTempPath());
 
-			Assert.Equal(Path.GetTempPath(), cm.ConfigurationFileLocation);
-
-			var cm2 = new ConfigurationManager()
-				.ApplicationSettings(@"C:\");
-
-			Assert.Equal(@"C:\", cm2.ConfigurationFileLocation);
-			Assert.NotEqual(cm.ConfigurationFileLocation, cm2.ConfigurationFileLocation);
+			Assert.Equal(Path.GetTempPath(), customLocation.ConfigurationFileLocation);
+			Assert.NotEqual(standardLocation.ConfigurationFileLocation, customLocation.ConfigurationFileLocation);
 		}
 	}
 }
