@@ -18,7 +18,7 @@
     <AssemblyVersion>1.1.2</AssemblyVersion>
     <FileVersion>1.1.2</FileVersion>
     <Version>1.1.2</Version>
-    <Description>📄🌟 The easy to use configuration file manager for .NET
+    <Description>📄🌟 Managing application and user settings for your .NET application has never been so easy
 
 Writing repetitive code to manage, read and write configuration files for every project is tedious. Let Miqo.Config take care of the heavy lifting of managing configuration files for you, so you can focus on your project.
 
