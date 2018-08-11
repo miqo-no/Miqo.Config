@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 Note that AppVeyor build number and the Miqo.Config release version numbers may not be in sync.
 
+## [v1.1.2](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.2) (2017-08-11)
+
+### Bug fixes
+
+* add conditional TargetFramework to .csproj ([d1b9ecb](https://github.com/miqo-no/Miqo.Config/commit/d1b9ecbea107194d5309ee87816701741a001226))
+
 ## [v1.1.1](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.1) (2017-07-27)
 
 ### New features
@@ -11,7 +17,7 @@ Note that AppVeyor build number and the Miqo.Config release version numbers may 
 * Update CHANGELOG.md formatting
 * Add CHANGELOG.md file to project [#6](https://github.com/miqo-no/Miqo.Config/issues/6) ([4f5aa3c](https://github.com/miqo-no/Miqo.Config/commit/4f5aa3cd908a5f33ccf88e0178ed854f87b995e4))
 
-### Fixed bugs
+### Bug fixes
 
 * Fix README.md with regards to supported versions of .NET  ([574f3d5](https://github.com/miqo-no/Miqo.Config/commit/574f3d5189f1c8d8a9b7873708bc2bfc8a52d288))
 * Fix NuGet package information with regards to supported versions of .NET ([9ff0179](https://github.com/miqo-no/Miqo.Config/commit/9ff01797f4c96d7856af7c71b26d502dd6b61b77))
