@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Miqo.Config {
 	/// <summary>
@@ -110,7 +112,11 @@ namespace Miqo.Config {
 		public ConfigurationManager SaveConfiguration(object config) {
 			if (config == null) throw new ArgumentNullException();
 
-			var s = Newtonsoft.Json.JsonConvert.SerializeObject(config, Newtonsoft.Json.Formatting.Indented);
+			var settings = new JsonSerializerSettings {
+				ContractResolver = new DefaultContractResolver {NamingStrategy = new CamelCaseNamingStrategy()},
+				Formatting = Formatting.Indented
+			};
+			var s = JsonConvert.SerializeObject(config, settings);
 
 			if (_config.Raw == s) {
 				Log?.Invoke($"Miqo.Config: No changes detected in configuration. Skipping...");
@@ -164,7 +170,7 @@ namespace Miqo.Config {
 			}
 			else if (configRaw != string.Empty) {
 				try {
-					config = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(configRaw);
+					config = JsonConvert.DeserializeObject<T>(configRaw);
 				}
 				catch (Exception e) {
 					LogException?.Invoke($"Miqo.Config: An exception occured while deserializing configuration", e);
