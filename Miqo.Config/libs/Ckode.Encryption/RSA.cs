@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -42,8 +42,8 @@ namespace Ckode.Encryption
 			/// <param name="privateKey">Private key.</param>
 			internal RSAKeyPair(string publicKey, string privateKey)
 			{
-				this.PublicKey = publicKey;
-				this.PrivateKey = privateKey;
+				PublicKey = publicKey;
+				PrivateKey = privateKey;
 			}
 
 			/// <summary>
