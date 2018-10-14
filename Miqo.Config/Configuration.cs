@@ -4,6 +4,7 @@ namespace Miqo.Config {
 	/// <summary>
 	/// A data type containing metadata about a configuration file.
 	/// </summary>
+	[Obsolete]
 	public class Configuration {
 		public string Raw { get; set; }
 		public object Parsed { get; set; }

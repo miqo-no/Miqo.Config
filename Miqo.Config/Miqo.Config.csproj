@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 	  <TargetFramework>netstandard2.0</TargetFramework>
 	  <Authors>Miqo DA</Authors>
@@ -22,6 +22,7 @@ Miqo.Config helps translate your strongly typed object to a JSON configuration f
 The library is available for .NET Standard 2.0, .NET Core 2.0 and .NET Framework 4.6.1.</Description>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
   </ItemGroup>

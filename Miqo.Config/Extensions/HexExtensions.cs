@@ -1,6 +1,7 @@
-// Credit: kgriffs @ stackoverflow
+﻿// Credit: kgriffs @ stackoverflow
 // https://stackoverflow.com/a/3974535
 
+// ReSharper disable once CheckNamespace
 namespace Miqo.Config {
 	public static class HexExtensions {
 		/// <summary>

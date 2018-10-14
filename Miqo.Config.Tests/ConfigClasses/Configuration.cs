@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Miqo.Config.Tests.ConfigClasses {
-	public class Configuration {
-		public string ConnectionString { get; set; }
-	}
+namespace Miqo.Config.Tests.ConfigClasses
+{
+    public class Configuration
+    {
+        public string Title { get; set; }
+        public int Season { get; set; }
+        public int Episode { get; set; }
+        public DateTime? AiredOn { get; set; }
+    }
 }

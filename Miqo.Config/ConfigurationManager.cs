@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -7,6 +7,7 @@ namespace Miqo.Config {
 	/// <summary>
 	/// The Configuration Manager manages either application wide or user specific settings
 	/// </summary>
+	[Obsolete("Deprecated. Use MiqoConfig class instead.")]
 	public class ConfigurationManager {
 		public string ConfigurationFileLocation { get; private set; }
 		private Configuration _config = new Configuration();

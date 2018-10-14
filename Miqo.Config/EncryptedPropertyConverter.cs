@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -7,7 +7,8 @@ namespace Miqo.Config {
 		private readonly string _key;
 
 		public EncryptedPropertyConverter(string encryptionKey) {
-			if (string.IsNullOrWhiteSpace(encryptionKey)) throw new ArgumentNullException(nameof(encryptionKey));
+			if (string.IsNullOrWhiteSpace(encryptionKey))
+			    throw new ArgumentNullException(nameof(encryptionKey));
 
 			_key = encryptionKey;
 		}
@@ -24,9 +25,8 @@ namespace Miqo.Config {
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
 			var value = reader.Value as string;
-			if (string.IsNullOrEmpty(value)) {
-				return reader.Value;
-			}
+		    if (string.IsNullOrEmpty(value))
+		        return reader.Value;
 
 			try {
 				return StringCipher.DecryptString(value, _key);
