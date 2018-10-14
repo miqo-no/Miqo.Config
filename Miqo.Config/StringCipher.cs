@@ -25,7 +25,7 @@ namespace Miqo.Config {
 		public static string CreateRandomKey() {
 			var key = new Ckode.Encryption.AES().GenerateKey();
 
-			return key.ToHex();
+			return Convert.ToBase64String(key);
 		}
 
 		public static bool StringContainsOnlyHex(string test)
