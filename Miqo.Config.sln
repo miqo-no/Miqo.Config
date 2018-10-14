@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miqo.Config", "Miqo.Config\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miqo.Config.Tests", "Miqo.Config.Tests\Miqo.Config.Tests.csproj", "{8782480B-E658-4957-8284-67FCA2B23D28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miqo.Config.CreateKeys", "Miqo.Config.CreateKeys\Miqo.Config.CreateKeys.csproj", "{61CEF51F-75DA-4F88-BB33-705796EA8E64}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{8782480B-E658-4957-8284-67FCA2B23D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8782480B-E658-4957-8284-67FCA2B23D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8782480B-E658-4957-8284-67FCA2B23D28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61CEF51F-75DA-4F88-BB33-705796EA8E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61CEF51F-75DA-4F88-BB33-705796EA8E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61CEF51F-75DA-4F88-BB33-705796EA8E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61CEF51F-75DA-4F88-BB33-705796EA8E64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

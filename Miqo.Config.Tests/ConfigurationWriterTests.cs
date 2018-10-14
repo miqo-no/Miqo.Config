@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Miqo.Config.Tests.ConfigClasses;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -214,6 +215,30 @@ namespace Miqo.Config.Tests
                 .FromString<ConfigClasses.ConfigurationWithEncryption>(s);
 
             Assert.Null(deserializedConfig.IgnoredVariable);
+        }
+
+        [Fact]
+        public void SerializeAndDeserializeUsingCustomFormatter()
+        {
+            var formatter = new XmlConfigurationFormatter(typeof(ConfigurationDb));
+            var expected = new ConfigurationDb
+            {
+                ConnectionString = "the_connection_string"
+            };
+
+            var xml = new MiqoConfig(formatter)
+                .Save(expected)
+                .ApplicationSettings()
+                .ToString();
+
+            Assert.NotEmpty(xml);
+
+            var actual = new MiqoConfig(formatter)
+                .Load()
+                .ApplicationSettings()
+                .FromString<ConfigurationDb>(xml);
+
+            Assert.Equal(expected.ConnectionString, actual.ConnectionString);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Miqo.Config.Formatters;
 
 namespace Miqo.Config
@@ -40,7 +41,7 @@ namespace Miqo.Config
         /// <param name="configuration">The configuration object to be serialized.</param>
         public ConfigurationWriter(ILogger logger, IConfigurationFormatter formatter, object configuration)
         {
-            _logger = logger;
+            _logger = logger ?? new NullLogger<MiqoConfig>();
             _formatter = formatter;
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }

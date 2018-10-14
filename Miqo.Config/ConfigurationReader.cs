@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Miqo.Config.Formatters;
 
 namespace Miqo.Config
@@ -34,7 +35,7 @@ namespace Miqo.Config
         /// <param name="formatter">The <see cref="IConfigurationFormatter"/> to use.</param>
         public ConfigurationReader(ILogger logger, IConfigurationFormatter formatter)
         {
-            _logger = logger;
+            _logger = logger ?? new NullLogger<MiqoConfig>();
             _formatter = formatter;
         }
 
