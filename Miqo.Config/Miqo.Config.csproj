@@ -1,12 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
-    <TargetFrameworks>netstandard2.0;netcoreapp2.0</TargetFrameworks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>netstandard2.0;netcoreapp2.0;net461</TargetFrameworks>
-  </PropertyGroup>
   <PropertyGroup>
-    <Authors>Miqo DA</Authors>
+	  <TargetFramework>netstandard2.0</TargetFramework>
+	  <Authors>Miqo DA</Authors>
     <Copyright>Copyright 2018 Miqo DA</Copyright>
     <PackageId>Miqo.Config</PackageId>
     <PackageProjectUrl>https://github.com/miqo-no/Miqo.Config/</PackageProjectUrl>
