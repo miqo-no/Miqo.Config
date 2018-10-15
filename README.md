@@ -36,7 +36,7 @@ Start by creating a class to hold your configurations.
 public class Configuration {
    public string Server { get; set; }
    public int Port { get; set; }
-   public List<string> { get; set; }
+   public List<string> IndexFiles { get; set; }
 }
 ```
 
