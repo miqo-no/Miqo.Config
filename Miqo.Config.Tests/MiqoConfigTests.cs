@@ -18,7 +18,7 @@ namespace Miqo.Config.Tests
                 .Load()
                 .ApplicationSettings()
                 .FromString<ConfigClasses.ConfigurationDb>(json);
-            
+
             Assert.Equal("localhost", config.ConnectionString);
         }
 
@@ -51,7 +51,12 @@ namespace Miqo.Config.Tests
         public void ToString_DropsPropertyFromJson_WhenNullValue()
         {
             var expectedJson =
-                "{\r\n  \"title\": \"The Enemy Within\",\r\n  \"season\": 1,\r\n  \"episode\": 3,\r\n  \"airedOn\": null\r\n}";
+                "{" + Environment.NewLine
+                    + "  \"title\": \"The Enemy Within\"," + Environment.NewLine
+                    + "  \"season\": 1," + Environment.NewLine
+                    + "  \"episode\": 3," + Environment.NewLine
+                    + "  \"airedOn\": null" + Environment.NewLine
+                    + "}";
 
             var expected = new ConfigClasses.Configuration
             {
