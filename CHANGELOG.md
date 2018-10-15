@@ -2,15 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
-Note that AppVeyor build number and the Miqo.Config release version numbers may not be in sync.
+## [v2.0.0](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.2) (2018-10-15)
 
-## [v1.1.2](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.2) (2017-08-11)
+Miqo.Config has been rewritten with a brand new fluent interface. The library also supports custom file formats for those who want to add support for working with .xml, .ini, .yaml or any other file format.
+
+### Breaking changes
+
+* Miqo.Config is now a .NET Standard 2.0 library.
+* `ConfigurationManager()` has been marked as deprecated. Use `MiqoConfig()` instead.
+
+### New features
+
+* Support for custom file formats. There is a very basic example of creating XML files.
+* Logging has been reworked.
+* Support for saving to and reading from `IO.Streams`.
+
+### Bug fixes
+
+* Encrypted properties were saved as a hex formatted string. They are now saved as base64 strings. Miqo.Config will still read the old hex formatted properties.
+* AES encryption keys were saved as a hex formatted string. They are now saved as base64 strings. Miqo.Config will still read the old hex formatted keys.
+
+### Other
+
+* New `.editorconfig` file.
+* Removed the CreateKeys tools as it's redundant. Use `StringCipher.CreateRandomKey()` instead.
+
+## [v1.1.2](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.2) (2018-08-11)
 
 ### Bug fixes
 
 * add conditional TargetFramework to .csproj ([d1b9ecb](https://github.com/miqo-no/Miqo.Config/commit/d1b9ecbea107194d5309ee87816701741a001226))
 
-## [v1.1.1](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.1) (2017-07-27)
+## [v1.1.1](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.1) (2018-07-27)
 
 ### New features
 
@@ -22,7 +45,7 @@ Note that AppVeyor build number and the Miqo.Config release version numbers may 
 * Fix README.md with regards to supported versions of .NET  ([574f3d5](https://github.com/miqo-no/Miqo.Config/commit/574f3d5189f1c8d8a9b7873708bc2bfc8a52d288))
 * Fix NuGet package information with regards to supported versions of .NET ([9ff0179](https://github.com/miqo-no/Miqo.Config/commit/9ff01797f4c96d7856af7c71b26d502dd6b61b77))
 
-## [v1.1.0](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.0) (2017-07-26)
+## [v1.1.0](https://github.com/miqo-no/Miqo.Config/releases/tag/v1.1.0) (2018-07-26)
 
 ### New features
 
