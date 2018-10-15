@@ -29,6 +29,16 @@ namespace Miqo.Config
         /// <summary>
         /// Initializes a new <see cref="MiqoConfig"/> instance.
         /// </summary>
+        /// <param name="logger">The <see cref="ILogger"/> to use.</param>
+        public MiqoConfig(ILogger logger)
+        {
+            _logger = logger;
+            _formatter = new JsonConfigurationFormatter(_logger);
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="MiqoConfig"/> instance.
+        /// </summary>
         /// <param name="formatter">The <see cref="IConfigurationFormatter"/> to use.</param>
         public MiqoConfig(IConfigurationFormatter formatter)
         {
