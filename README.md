@@ -125,7 +125,7 @@ Miqo.Config has some other nifty features that may be useful to you as a develop
 You can add logging capabilities to Miqo.Config. Serilog can be added as such:
 
 ```csharp
-var logger = Log.Logger = new LoggerConfiguration()
+var logger = new LoggerConfiguration()
    .WriteTo.Console()
    .CreateLogger();
 
